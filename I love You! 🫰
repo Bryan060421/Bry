@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Erica!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #fff;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      color: #fff;
+      background: #ff6f61;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #ff4757;
+    }
+
+    .message {
+      display: none;
+      text-align: center;
+    }
+
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .heart {
+      width: 20px;
+      height: 20px;
+      background: pink;
+      position: absolute;
+      transform: rotate(-45deg);
+      animation: float 5s infinite;
+    }
+
+    .heart:before,
+    .heart:after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: pink;
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .heart:before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart:after {
+      left: 10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(-45deg);
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-1000px) rotate(-45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="message">
+      <h1>Happy Birthday, Erica! 🎉</h1>
+      <p>You bring joy, love, and light into my life every day. ❤️</p>
+      <p>Wishing you all the happiness in the world!</p>
+    </div>
+    <button onclick="showMessage()">Click Me!</button>
+    <div class="hearts" id="hearts"></div>
+  </div>
+
+  <script>
+    function showMessage() {
+      document.querySelector('.message').style.display = 'block';
+      document.querySelector('button').style.display = 'none';
+
+      // Generate hearts
+      for (let i = 0; i < 50; i++) {
+        createHeart();
+      }
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+      document.getElementById('hearts').appendChild(heart);
+
+      // Remove heart after animation
+      setTimeout(() => heart.remove(), 5000);
+    }
+  </script>
+</body>
+</html>
